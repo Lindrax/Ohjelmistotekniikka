@@ -1,4 +1,7 @@
-.pytest_cache
-__pycache__
+
 .coverage
+.pytest_cache
 htmlcov
+__pycache__
+.venv
+data/database.sqlite

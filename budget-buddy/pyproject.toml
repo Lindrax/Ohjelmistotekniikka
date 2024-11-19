@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "budget-bud"
+version = "0.1.0"
+description = ""
+authors = ["Axel <axel.lindroos1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+pytest = "^8.3.3"
+invoke = "^2.2.0"
+robot = "^20071211"
+coverage = "^7.6.7"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
