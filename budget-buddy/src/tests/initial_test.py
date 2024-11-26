@@ -3,6 +3,7 @@ import sqlite3
 from budget_repository import BudgetRepository
 from init_database import create_tables, create_initial
 
+
 class TestBudgetRepository(unittest.TestCase):
 
     def setUp(self):
@@ -18,10 +19,10 @@ class TestBudgetRepository(unittest.TestCase):
     def test_add_entry(self):
         self.repository.add_entry("Test", 100)
         entries = self.repository.find_all()
-        
+
         self.assertEqual(len(entries), 1)
-        self.assertEqual(entries[0][1], "Test") 
-        self.assertEqual(entries[0][2], 100)          
+        self.assertEqual(entries[0][1], "Test")
+        self.assertEqual(entries[0][2], 100)
 
     def test_initial(self):
         create_initial(self.connection)
@@ -35,6 +36,7 @@ class TestBudgetRepository(unittest.TestCase):
         self.assertIn("Salary", descriptions)
         self.assertIn(-50, amounts)
         self.assertIn(1500, amounts)
+
 
 if __name__ == "__main__":
     unittest.main()

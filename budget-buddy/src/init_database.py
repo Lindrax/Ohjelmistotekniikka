@@ -1,7 +1,9 @@
+"""connection"""
 from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Drop tables"""
     print("dropping tables")
     cursor = connection.cursor()
     cursor.execute('''
@@ -11,6 +13,7 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """create tables"""
     print("creating tables")
     cursor = connection.cursor()
     cursor.execute('''
@@ -23,15 +26,17 @@ def create_tables(connection):
 
     connection.commit()
 
+
 def create_initial(connection):
+    """mock data"""
     print("initialising data")
     cursor = connection.cursor()
 
     test_data = [
-        ( "Groceries", -50),
-        ( "Salary", 1500),
-        ( "Rent", -700),
-        ( "Coffee", -3),
+        ("Groceries", -50),
+        ("Salary", 1500),
+        ("Rent", -700),
+        ("Coffee", -3),
     ]
 
     cursor.executemany('''
@@ -42,6 +47,7 @@ def create_initial(connection):
 
 
 def initialize_database():
+    """reset"""
     connection = get_database_connection()
 
     drop_tables(connection)

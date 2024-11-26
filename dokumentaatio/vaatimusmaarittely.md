@@ -10,9 +10,10 @@ Peruskäyttäjä, sekä ehkä myöhemmin admin käyttäjä
 
 ## Perusversion tarjoama toiminnallisuus
 
-- lisää kuluja
-- lisää tuloja
-- näe kokonaistilanne
+- lisää kuluja, tehty
+- lisää tuloja, tehty
+- näe kokonaistilanne, tehty
+- graafinen käyttöliittymä, tehty
 
 ## Jatkokehitysideoita
 
