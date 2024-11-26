@@ -18,5 +18,5 @@ classDiagram
     BudgetApp --> DatabaseManager :
     BudgetApp --> BudgetRepository :
     DatabaseManager --> DatabaseConnection :
-    BudgetRepository --> DatabaseConnection :
+    BudgetRepository --> DatabaseConnection
 ```
