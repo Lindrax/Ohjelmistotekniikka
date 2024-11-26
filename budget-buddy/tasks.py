@@ -6,7 +6,7 @@ def start(ctx):
 
 @task
 def build(ctx):
-    ctx.run("python3 src/init_database.py", pty=True)
+    ctx.run("python3 src/database_manager.py", pty=True)
 
 @task
 def test(ctx):

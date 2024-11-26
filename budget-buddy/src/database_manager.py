@@ -50,3 +50,8 @@ class DatabaseManager:
         print("Initializing database...")
         self.drop_tables()
         self.create_tables()
+
+
+if __name__ == "__main__":
+    db_manager = DatabaseManager()
+    db_manager.initialize_database()
