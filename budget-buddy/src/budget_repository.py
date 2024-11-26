@@ -3,7 +3,7 @@ from database_connection import get_database_connection
 
 
 class BudgetRepository:
-    """Budgetrepository"""
+    """Budget Repository"""
 
     def __init__(self, connection):
         """init"""
