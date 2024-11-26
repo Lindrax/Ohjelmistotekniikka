@@ -1,7 +1,7 @@
 import unittest
 import sqlite3
 from budget_repository import BudgetRepository
-from init_database import create_tables, create_initial
+from database_manager import DatabaseManager
 
 
 class TestBudgetRepository(unittest.TestCase):
@@ -9,7 +9,8 @@ class TestBudgetRepository(unittest.TestCase):
     def setUp(self):
         self.connection = sqlite3.connect(":memory:")
         self.connection.row_factory = sqlite3.Row
-        create_tables(self.connection)
+        self.db_manager = DatabaseManager(self.connection)
+        self.db_manager.initialize_database()
         self.repository = BudgetRepository(self.connection)
 
     def test_database_empty(self):
@@ -25,7 +26,7 @@ class TestBudgetRepository(unittest.TestCase):
         self.assertEqual(entries[0][2], 100)
 
     def test_initial(self):
-        create_initial(self.connection)
+        self.db_manager.create_initial_data()
         entries = self.repository.find_all()
         self.assertEqual(len(entries), 4)
 

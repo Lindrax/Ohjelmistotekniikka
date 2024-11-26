@@ -4,3 +4,10 @@
 - lisätty BudgetRepository luokka joka huolehtii tietokantaoperaatioista
 - lisätty terminaalissa pyörivä käyttöliittymä
 - tehty testit tietokantaoperaatioille
+
+## Viikko 4
+
+- Lisätty sovellukseen graafinen käyttöliittymä
+- Lisätty käyttäjälle ominaisuus tyhjentää tietokanta
+- Sovellus näyttää kulujen kokonaistilanteen
+- Koodi on refaktoroitu omiin luokkiin
