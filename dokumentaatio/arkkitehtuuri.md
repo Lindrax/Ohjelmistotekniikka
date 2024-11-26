@@ -14,9 +14,9 @@ classDiagram
     class DatabaseConnection {
     }
 
-
-    BudgetApp --> DatabaseManager :
-    BudgetApp --> BudgetRepository :
-    DatabaseManager --> DatabaseConnection :
+    BudgetApp --> DatabaseManager
+    BudgetApp --> BudgetRepository
+    DatabaseManager --> DatabaseConnection
     BudgetRepository --> DatabaseConnection
+
 ```
