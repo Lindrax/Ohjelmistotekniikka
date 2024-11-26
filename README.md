@@ -11,6 +11,8 @@ Tällä hetkellä sovellus toimii tekstikäyttöliittymällä, jossa voit katsoa
 
 [changelog](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/changelog.md).
 
+[arkkitehtuuri](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/arkkitehtuuri.md).
+
 Sovelluksen käyttö:
 
 1. Asenna riippuvuudet komennolla poetry install.
