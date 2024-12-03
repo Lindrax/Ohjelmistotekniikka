@@ -18,5 +18,7 @@ Peruskäyttäjä, sekä ehkä myöhemmin admin käyttäjä
 ## Jatkokehitysideoita
 
 - ehkä jonkinlaisia kuvaajia
+- poista tapahtumia, tehty
+- muokkaa tapahtumia, tehty
 - ryhmittele kuukausittain
 - lisää toistuvia eriä

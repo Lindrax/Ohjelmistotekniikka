@@ -27,6 +27,21 @@ class BudgetRepository:
         x = self._connection.commit()
         print(x)
 
+    def delete_entry(self, entry_id):
+        """"delete entry"""
+        print(id)
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "DELETE FROM entries WHERE id = ?", (entry_id,))
+        self._connection.commit()
+
+    def modify_entry(self, entry_id, desc, amount):
+        """"modify entry"""
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "UPDATE entries SET desc = ?, amount = ? WHERE id = ?", (desc, amount, entry_id))
+        self._connection.commit()
+
 
 user_repository = BudgetRepository(get_database_connection())
 users = user_repository.find_all()

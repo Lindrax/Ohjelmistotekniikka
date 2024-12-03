@@ -38,6 +38,23 @@ class TestBudgetRepository(unittest.TestCase):
         self.assertIn(-50, amounts)
         self.assertIn(1500, amounts)
 
+    def test_modify_entry(self):
+        self.repository.add_entry("Test", 100)
+        entry = self.repository.find_all()[0]
+        self.repository.modify_entry(entry[0], "Updated Test", 200)
+
+        updated_entry = self.repository.find_all()[0]
+        self.assertEqual(updated_entry[1], "Updated Test")
+        self.assertEqual(updated_entry[2], 200)
+
+    def test_delete_entry(self):
+        self.repository.add_entry("Test", 100)
+        entry = self.repository.find_all()[0]
+        self.repository.delete_entry(entry[0])
+
+        entries = self.repository.find_all()
+        self.assertEqual(len(entries), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

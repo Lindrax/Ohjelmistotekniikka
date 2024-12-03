@@ -11,3 +11,9 @@
 - Lisätty käyttäjälle ominaisuus tyhjentää tietokanta
 - Sovellus näyttää kulujen kokonaistilanteen
 - Koodi on refaktoroitu omiin luokkiin
+
+## Viikko 5
+
+- Tehty mahdollisuus poistaa kuluja
+- Tehty mahdollisuus muokata kuluja
+- kenttiä pystyy valitsemaan klikaamalla id riviä

@@ -3,7 +3,7 @@
 Budget-buddy
 
 Sovellus tulojen ja menojen kirjaamiseen.
-Tällä hetkellä sovellus toimii tekstikäyttöliittymällä, jossa voit katsoa sinulla olevia eriä, ja lisätä niitä
+Sovelluksessa on graafinen käyttöliittymä, josta voit lisätä kuluja, valitsemalla rivin voit myös muokata tai poistaa erän. Tietokantaan voi alustaa dataa napilla populate database, ja sovellus näyttää tulojen ja menojen yhteenlasketun tilanteen. Tietokannan voi myös tyhjentää napilla Reset database
 
 [Määrittely dokumentti](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/vaatimusmaarittely.md).
 
@@ -25,3 +25,5 @@ Muuta:
 
 - Testikattavuuden voi selvittää komennolla poetry run invoke coverage-report
 - testit voi suorittaa komennolla poetry run invoke test
+- kirjoitusasun voi tarkistaa poetry run invoke lint
+- automaattiset korjaukset voi tehdä poetry run invoke format
