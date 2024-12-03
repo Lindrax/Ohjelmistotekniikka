@@ -17,7 +17,7 @@ Sovelluksessa on graafinen käyttöliittymä, josta voit lisätä kuluja, valits
 
 Sovelluksen käyttö:
 
-1. Asenna riippuvuudet komennolla poetry install.
+1. Siirry hakemistoon budget-buddy ja asenna riippuvuudet komennolla poetry install.
 
 2. alusta tietokanta komennolla poetry run invoke build
 
