@@ -12,6 +12,7 @@ Sovelluksessa on graafinen käyttöliittymä, josta voit lisätä kuluja, valits
 [changelog](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/changelog.md).
 
 [arkkitehtuuri](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/arkkitehtuuri.md).
+
 [Release](https://github.com/Lindrax/Ohte/releases/tag/Viikko5).
 
 Sovelluksen käyttö:
