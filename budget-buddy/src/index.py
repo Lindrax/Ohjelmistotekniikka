@@ -1,24 +1,38 @@
 from tkinter import Tk, Label, Button, Entry, Text, END, messagebox
-from budget_repository import BudgetRepository
-from database_manager import DatabaseManager
+from tkinter.filedialog import asksaveasfilename, askopenfilename
+from budget_manager import BudgetManager
 
 
 class BudgetApp:
-    """Main application."""
+    """
+    GUI for the Budget App.
+
+    Attributes:
+        root: The root Tkinter window for the application.
+        manager: The BudgetManager instance for handling budget operations.
+        entry_desc: Input field for the description of a budget entry.
+        entry_amount: Input field for the amount of a budget entry.
+        total_label: Label displaying the total amount of all budget entries.
+        text_display: Text widget for displaying budget entries.
+    """
 
     def __init__(self, root):
-        """Initialize the application."""
-        self.db_manager = DatabaseManager()
-        self.connection = self.db_manager.connection
-        self.repository = BudgetRepository(self.connection)
+        """
+        Initializes the GUI and connects it to the BudgetManager.
+
+        Args:
+            root: The root Tkinter window for the application.
+        """
         self.root = root
         self.root.title("Budget Buddy")
-
+        self.manager = BudgetManager()
         self.create_ui()
         self.view_entries()
 
     def create_ui(self):
-        """UI components."""
+        """
+        Creates and initializes the UI components for the application.
+        """
         Label(self.root, text="Budget Buddy", font=("Arial", 16)).grid(
             row=0, column=0, columnspan=2, pady=10)
 
@@ -46,6 +60,10 @@ class BudgetApp:
             row=8, column=0, columnspan=2, pady=5)
         Button(self.root, text="Exit", command=self.root.quit).grid(
             row=9, column=0, columnspan=2, pady=10)
+        Button(self.root, text="Export to CSV", command=self.export_to_csv).grid(
+            row=12, column=0, columnspan=1, pady=5)
+        Button(self.root, text="Import from CSV", command=self.import_from_csv).grid(
+            row=12, column=1, columnspan=1, pady=5)
 
         self.total_label = Label(
             self.root, text="Total Amount: 0", font=("Arial", 12), fg="blue")
@@ -57,107 +75,87 @@ class BudgetApp:
         self.text_display.bind("<ButtonRelease-1>", self.select_entry)
 
     def view_entries(self):
-        """Displays all budget entries."""
-        entries = self.repository.find_all()
+        """
+        Retrieves and displays all budget entries from the BudgetManager.
+        """
+        entries = self.manager.get_entries()
         self.text_display.delete(1.0, END)
         if not entries:
             self.text_display.insert(END, "No entries found.\n")
         else:
             for entry in entries:
                 self.text_display.insert(
-                    END, f"ID: {entry[0]} (click here to select) \n Desc: {entry[1]} | Amount: {entry[2]}\n")
-
+                    END, f"ID: {entry[0]} (click here to select)"
+                        f"\n Desc: {entry[1]} | Amount: {entry[2]}\n")
         self.update_total()
 
     def add_entry(self):
-        """Adds a new entry."""
+        """
+        Adds a new budget entry.
+        """
         description = self.entry_desc.get()
         amount = self.entry_amount.get()
-        if not description or not amount:
-            messagebox.showwarning(
-                "Input Error", "Both fields must be filled!")
-            return
         try:
-            amount = int(amount)
-            self.repository.add_entry(description, amount)
-            messagebox.showinfo("Success", "Entry added successfully!")
+            self.manager.add_entry(description, amount)
             self.entry_desc.delete(0, END)
             self.entry_amount.delete(0, END)
             self.view_entries()
-        except ValueError:
-            messagebox.showerror("Input Error", "Amount must be a number.")
+        except ValueError as e:
+            messagebox.showerror("Error", str(e))
 
     def delete_entry(self):
-        """Deletes the entry."""
+        """
+        Deletes the selected budget entry.
+        """
         selected_text = self.text_display.get("sel.first", "sel.last")
-        if not selected_text:
-            messagebox.showwarning(
-                "Selection Error", "Please select an entry to delete.")
-            return
-
-        entry_id = self.extract_id(selected_text)
+        entry_id = self.manager.extract_id(selected_text)
         if entry_id:
-            self.repository.delete_entry(entry_id)
-            messagebox.showinfo("Success", "Entry deleted successfully!")
+            self.manager.delete_entry(entry_id)
             self.view_entries()
 
     def modify_entry(self):
-        """Modifies the entry."""
+        """
+        Modifies the selected budget entry.
+        """
         selected_text = self.text_display.get("sel.first", "sel.last")
-        if not selected_text:
-            messagebox.showwarning(
-                "Selection Error", "Please select an entry to modify.")
-            return
-
-        entry_id = self.extract_id(selected_text)
+        entry_id = self.manager.extract_id(selected_text)
+        description = self.entry_desc.get()
+        amount = self.entry_amount.get()
         if entry_id:
-            new_description = self.entry_desc.get()
-            new_amount = self.entry_amount.get()
-
-            if not new_description or not new_amount:
-                messagebox.showwarning(
-                    "Input Error", "Fill in the fields before modifying!")
-                return
-
             try:
-                new_amount = int(new_amount)
-                self.repository.modify_entry(
-                    entry_id, new_description, new_amount)
-                messagebox.showinfo("Success", "Entry modified successfully!")
+                self.manager.modify_entry(entry_id, description, amount)
                 self.view_entries()
-            except ValueError:
-                messagebox.showerror("Input Error", "Amount must be a number.")
+            except ValueError as e:
+                messagebox.showerror("Error", str(e))
 
     def populate_database(self):
-        """Populates the database with mock data."""
-        self.db_manager.create_initial_data()
-        messagebox.showinfo("Success", "Database populated with test data!")
+        """
+        Populates the database with default entries.
+        """
+        self.manager.populate_database()
         self.view_entries()
 
     def reset_database(self):
-        """Resets the database."""
-        self.db_manager.initialize_database()
-        messagebox.showinfo("Success", "Database was reset!")
+        """
+        Resets the database by clearing all entries.
+        """
+        self.manager.reset_database()
         self.view_entries()
 
     def update_total(self):
-        """Calculates the total."""
-        entries = self.repository.find_all()
-        total = sum(entry[2] for entry in entries) if entries else 0
+        """
+        Updates the total amount displayed in the application.
+        """
+        total = self.manager.get_total_amount()
         self.total_label.config(text=f"Total Amount: {total}")
 
-    def extract_id(self, text):
-        """Extracts the ID from the selected text."""
-        try:
-            id_line = text.split("\n")[0]
-            entry_id = id_line.split(":")[1].split("(")[0].strip()
-            return int(entry_id)
-        except (IndexError, ValueError):
-            messagebox.showerror("Error", "Unable to extract ID.")
-            return None
-
     def select_entry(self, event):
-        """Selects the clicked entry."""
+        """
+        Selects a budget entry from the display.
+
+        Args:
+            event: The mouse event triggered by the user's selection.
+        """
         try:
             index = self.text_display.index(f"@{event.x},{event.y}")
             line_start = f"{index.split('.', maxsplit=1)[0]}.0"
@@ -168,21 +166,45 @@ class BudgetApp:
 
             selected_text = self.text_display.get(
                 line_start, next_line).strip()
+            description, amount = self.manager.parse_entry(selected_text)
 
-            lines = selected_text.split("\n")
-            if len(lines) == 2:
-                desc_amount = lines[1].split("|")
-                description = desc_amount[0].replace("Desc:", "").strip()
-                amount = desc_amount[1].replace("Amount:", "").strip()
-
-                self.entry_desc.delete(0, END)
-                self.entry_desc.insert(0, description)
-                self.entry_amount.delete(0, END)
-                self.entry_amount.insert(0, amount)
-
-        except Exception:
+            self.entry_desc.delete(0, END)
+            self.entry_desc.insert(0, description)
+            self.entry_amount.delete(0, END)
+            self.entry_amount.insert(0, amount)
+        except ValueError as e:
             messagebox.showerror(
-                "Selection Error", "Could not select or parse entry.")
+                "Selection Error", f"Could not parse entry: {e}")
+            
+    def export_to_csv(self):
+        """
+        Exports budget entries to a CSV file.
+        """
+        file_path = asksaveasfilename(
+            defaultextension=".csv",
+            filetypes=[("CSV", "*.csv")],
+            title="Export Budget Data")
+        if file_path:
+            try:
+                self.manager.export_to_csv(file_path)
+                messagebox.showinfo("Export Successful", f"Data exported to {file_path}")
+            except Exception as e:
+                messagebox.showerror("Export Error", str(e))
+
+    def import_from_csv(self):
+        """
+        Imports budget entries from a CSV file.
+        """
+        file_path = askopenfilename(
+            filetypes=[("CSV", "*.csv")],
+            title="Import Budget Data")
+        if file_path:
+            try:
+                self.manager.import_from_csv(file_path)
+                self.view_entries()
+                messagebox.showinfo("Import Successful", f"Data imported from {file_path}")
+            except Exception as e:
+                messagebox.showerror("Import Error", str(e))
 
 
 if __name__ == "__main__":

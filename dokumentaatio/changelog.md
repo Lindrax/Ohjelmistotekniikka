@@ -17,3 +17,10 @@
 - Tehty mahdollisuus poistaa kuluja
 - Tehty mahdollisuus muokata kuluja
 - kenttiä pystyy valitsemaan klikaamalla id riviä
+
+## Viikko 5
+
+- Refaktoroitu sovelluslogiikkaa ja käyttöliittymää erilleen
+- Mahdollisuus tallentaa kulut tiedostoon
+- Mahdollisuus ladata tiedostosta kulut sovellukseen
+- laajennettu testausta

@@ -22,3 +22,5 @@ Peruskäyttäjä, sekä ehkä myöhemmin admin käyttäjä
 - muokkaa tapahtumia, tehty
 - ryhmittele kuukausittain
 - lisää toistuvia eriä
+- voit ladata kulusi tiedostoon, tehty
+- voit ladata tiedostosta kulut sovellukseen, tehty

@@ -14,5 +14,9 @@
 | 30.11. | 2    | Käyttöliittymään kenttien valinta ja id:n hakeminen               |
 | 2.12.  | 2    | Poisto ja muokkausoperaatioiden viimeistely, koodin siistiminen   |
 | 3.12.  | 2    | Koodin siistiminen, lisää testejä, sekvenssikaavio                |
+| 6.12.  | 2    | Koodin refaktorointi, docstring                                   |
+| 8.12.  | 3    | Kulujen vieminen CSV tiedostoon, ja tuominen tiedostosta          |
+| 9.12.  | 2    | Testien kirjoittamista                                            |
+| 10.12. | 2    | Koodin siistimistä, Docstringiä, testejä                          |
 
-Yhteensä 24
+Yhteensä 33
