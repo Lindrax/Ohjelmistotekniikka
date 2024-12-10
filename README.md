@@ -3,7 +3,7 @@
 Budget-buddy
 
 Sovellus tulojen ja menojen kirjaamiseen.
-Sovelluksessa on graafinen käyttöliittymä, josta voit lisätä kuluja, valitsemalla rivin voit myös muokata tai poistaa erän. Tietokantaan voi alustaa dataa napilla populate database, ja sovellus näyttää tulojen ja menojen yhteenlasketun tilanteen. Tietokannan voi myös tyhjentää napilla Reset database
+Sovelluksessa on graafinen käyttöliittymä, josta voit lisätä kuluja. Valitsemalla rivin voit myös muokata tai poistaa erän. Tietokantaan voi alustaa dataa napilla populate database, ja sovellus näyttää tulojen ja menojen yhteenlasketun tilanteen. Tietokannan voi myös tyhjentää napilla Reset database. Voit myös ladata kulut CSV tiedostoon, tai ladata CSV tiedostosta kulut sovellukseen.
 
 [Määrittely dokumentti](https://github.com/Lindrax/Ohte/tree/main/dokumentaatio/vaatimusmaarittely.md).
 
