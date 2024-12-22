@@ -18,7 +18,7 @@
 - Tehty mahdollisuus muokata kuluja
 - kenttiä pystyy valitsemaan klikaamalla id riviä
 
-## Viikko 5
+## Viikko 6
 
 - Refaktoroitu sovelluslogiikkaa ja käyttöliittymää erilleen
 - Mahdollisuus tallentaa kulut tiedostoon

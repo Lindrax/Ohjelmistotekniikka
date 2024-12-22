@@ -18,5 +18,8 @@
 | 8.12.  | 3    | Kulujen vieminen CSV tiedostoon, ja tuominen tiedostosta          |
 | 9.12.  | 2    | Testien kirjoittamista                                            |
 | 10.12. | 2    | Koodin siistimistä, Docstringiä, testejä                          |
+| 19.12. | 2    | testaus tiedosto                                                  |
+| 20.12. | 2    | Viimeistelyä                                                      |
+| 22.12. | 2    | Dokumentaation viimeistely                                        |
 
-Yhteensä 33
+Yhteensä 39

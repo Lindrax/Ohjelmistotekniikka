@@ -175,7 +175,7 @@ class BudgetApp:
         except ValueError as e:
             messagebox.showerror(
                 "Selection Error", f"Could not parse entry: {e}")
-            
+
     def export_to_csv(self):
         """
         Exports budget entries to a CSV file.

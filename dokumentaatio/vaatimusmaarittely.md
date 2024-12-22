@@ -6,7 +6,7 @@ Budjetointi sovellus, jolla käyttäjä voi pitää kirjaa tuloista ja menoista 
 
 ## Käyttäjät
 
-Peruskäyttäjä, sekä ehkä myöhemmin admin käyttäjä
+Peruskäyttäjä
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -17,10 +17,7 @@ Peruskäyttäjä, sekä ehkä myöhemmin admin käyttäjä
 
 ## Jatkokehitysideoita
 
-- ehkä jonkinlaisia kuvaajia
 - poista tapahtumia, tehty
 - muokkaa tapahtumia, tehty
-- ryhmittele kuukausittain
-- lisää toistuvia eriä
 - voit ladata kulusi tiedostoon, tehty
 - voit ladata tiedostosta kulut sovellukseen, tehty

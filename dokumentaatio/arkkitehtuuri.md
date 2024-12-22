@@ -1,3 +1,26 @@
+Sovellus on budjetinhallintajärjestelmä, joka koostuu seuraavista pääkomponenteista:
+
+BudgetManager
+
+Vastuussa sovelluslogiikasta ja tiedon käsittelystä.
+Tarjoaa korkean tason toiminnallisuuksia, kuten kulujen lisäämisen, poistamisen, muokkaamisen ja tietojen tuonnin/viennin CSV-tiedostoihin.
+Kommunikoi tietokannan kanssa BudgetRepository- ja DatabaseManager-luokkien kautta.
+
+BudgetRepository
+
+Vastaa budjettientrien tallentamisesta ja hakemisesta tietokannasta.
+Tarjoaa CRUD-toiminnallisuudet (Create, Read, Update, Delete).
+
+DatabaseManager
+
+Vastaa tietokannan alustamisesta, rakenteen hallinnasta ja testidatan luomisesta.
+
+Tietokantayhteys
+
+Käyttää get_database_connection-funktiota tietokantayhteyden hallintaan.
+
+Luokkakaavio:
+
 ```mermaid
 classDiagram
     direction TB
